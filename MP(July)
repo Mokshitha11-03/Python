@@ -1,0 +1,37 @@
+#Q1: Write a function that calculates the area of a rectangle.
+'''
+def area_of_rectangle(length, width):
+    return length * width
+
+print(area_of_rectangle(10, 5))
+'''
+
+#Q2: Write a function that checks whether a number is even or odd.
+'''
+def isEven(n):
+    if n%2==0:
+        result = (n, "is even")
+    else:
+        result = (n, "is odd")
+    return result
+
+print(isEven(5))
+print(isEven(8))
+'''
+
+#Q3: Write a function that returns the largest of three numbers.
+'''
+def isLargest(a, b, c):
+    if  a>b and a>c:
+        result = f"{a} is Largest"
+    elif b>a and b>c:
+        result = f"{b} is Largest"
+    else:
+        result = f"{c} is Largest"
+    return result
+
+print(isLargest(3, 7, 5))
+'''
+
+#Q4
+
