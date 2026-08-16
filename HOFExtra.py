@@ -237,7 +237,7 @@ r = reduce(lambda x,y: x*y, f)
 print(r)
 '''
 
-#Q4 (****)
+#Q4 ****
 '''
 from functools import reduce
 words = ['Level', 'Madam', 'Apple', 'Radar', 'Python', 'Anna', 'Malayalam']
@@ -251,7 +251,7 @@ r = reduce(lambda x, y: x + " " + y, m)
 print(r)
 '''
 
-#Q5 (****)(DOUBT)
+#Q5 ****
 '''
 from functools import reduce
 transactions = [
@@ -326,7 +326,7 @@ print(result)
 
 #Q6 (RECURSION)
 
-#Q7 (DOUBT)
+#Q7
 '''
 from functools import reduce
 
@@ -389,4 +389,93 @@ result = sorted(students, key = strategies[choice])
 print(result)
 '''
 
-#Q10 (DOUBT)
+#Q10
+'''
+from functools import reduce
+def calculator(*args, operation = "add", **options):
+    operations = {
+        'add': lambda nums: reduce(lambda x, y: x+y, nums),
+        'multiply': lambda nums: reduce(lambda x, y: x*y, nums),
+        'max': lambda nums: reduce(lambda x, y: x if x>y else y, nums),
+        'min': lambda nums: reduce(lambda x, y: x if x<y else y, nums)
+    }
+
+    if options.get('show_Steps', True):
+        print("Numbers:", args)
+        print("Operation:", operation)
+    return operations[operation](args)
+
+print(calculator(2,3,4, operation = 'add'))
+print(calculator(3,4,5, operation = 'multiply'))
+print(calculator(4,3,7, operation = 'min'))
+'''
+
+
+
+#from functools import reduce
+
+'''
+prices = [280, 52, 850, 980, 370, 650]
+
+total = reduce(lambda x,y: x+y, 
+               map(lambda x: x**0.9, 
+                   filter(lambda x: x>500, prices)))
+print(int(total))
+'''
+
+'''
+numbers = [-280, 52, -850, 980, -370, 650]
+total = reduce(lambda x,y:x+y, map(abs, filter(lambda x: x<0, numbers)))
+
+print(total)
+'''
+
+'''
+integers = [56, 76, 34, 76, 87]
+
+total =list(map(lambda x: x*3, list(filter(lambda x: x<50, integers))))
+print(reduce(lambda a, b: a if a>b else b, total))
+'''
+
+#27JULY
+'''
+def calculator(*args, operation='add', **options):
+    op={'add': lambda x,y: x+y,
+        'mul': lambda x,y: x*y,
+        'min': lambda x,y: x if x<y else y,
+        'max': lambda x,y: x if x>y else y}
+    func = op['operation']
+    res = args[0]
+    for i in range(1, len(args)):
+        res = func(res, args[i])
+        if options.get('show_steps'):   #if True:
+            print(res, i, operation, func(res, i))
+        res = func(res, i)
+    return res
+'''
+
+'''
+from functools import reduce
+lst = ['maDAm', 'Cat', 'beLlb', 'radaR']
+print(reduce(lambda x,y: x+ ' ' + y,
+             sorted(list(map(lambda x: x.lower(), 
+             list(filter(lambda x: x[0] == x[-1], lst)))), 
+             key = lambda x: (x[-1], len(x)))))
+'''
+
+
+'''
+students = [{'Alice', 85}, {'Bob', 74}, {'David', 88}]
+
+#final = list(filter(lambda x: x['score'] >= 65, students))
+final = list(filter(lambda x: x[1] >= 65, students))
+results = list(map(lambda x: {**x, 'grade' : 'Pass'}, final))
+print(results)
+'''
+
+
+'''
+l = [28, 93, 82, 37]
+fahrenheit = list(map(lambda x: (x *9/5) + 32, l))
+print(fahrenheit)
+'''
