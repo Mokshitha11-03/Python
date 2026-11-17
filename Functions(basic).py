@@ -25,7 +25,7 @@ print(area_of_rectangle(7, 4))
 '''
 
 '''
-def area_of_rectangle(lenght, width):
+def area_of_rectangle(length, width):
     return length * width
 print(area_of_rectangle(2))
 '''
