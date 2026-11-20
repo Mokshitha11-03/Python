@@ -13,6 +13,35 @@ obj = Person(20)
 print(obj.age)
 '''
 
+'''2• Write a function named find_length(obj) that uses a loop to calculate the length
+of the given object without using the built-in len() function. The function should 
+return the calculated length if the object is iterable. If a non-iterable object such
+as an integer is passed, the function should raise and handle a TypeError, and print 
+an appropriate error message explaining what happens when an integer is sent as input.'''
+'''
+def find_length(obj):
+    c=0
+    try:
+        if isinstance(obj,(str,list,tuple)):
+            for x in obj:
+                c += 1
+            return c
+        elif isinstance(obj):
+            for k,v in obj.items():
+                c += 1
+            return c
+        else:
+            raise TypeError("Obj must be string, list, tuple, dict")    #to raise the error
+    # to handle the error
+    except TypeError as e:
+        #to handle the error
+        print("Error:", e)
+        print("Integer is not an iterable object.")
+
+find_length(1234567)    #to handle the error
+#print(find_length(1234567)) #if you want to raise an error.
+'''
+
 '''3• Create a class Student with an attribute marks. Implement a method 
 set_marks(marks) that raises a ValueError if marks are not in the range 0 to 
 100.'''
@@ -76,10 +105,12 @@ exception if the password length is less than 8 characters.'''
 class PasswordValidator:
     def validate(self, password):
         if len(password) < 8:
+            #raise
             raise ValueError("Required more characters")
         self.password = password
 
 pv = PasswordValidator()
+#pv.validate("")
 pv.validate("mokshitha@112345678")
 #pv.validate("mok@11")
 print(pv.password)
@@ -104,8 +135,40 @@ u.get_integer("abc")
 u.get_integer(None)
 '''
 
+'''8• Create a base class Shape with a method area() that raises NotImplementedError. 
+Create a child class Rectangle that overrides and implements the area method. '''
+'''
+class Shape:
+    def area(self):
+        raise NotImplementedError("Area method must be implemented in child class") #if you raise error it will print
+
+class Rectangle(Shape):
+    #pass #Error
+    def area(self):
+        print("area")
+r = Rectangle()
+r.area()
+'''
+
+'''9• Create a class Service with a method that calls another method which raises an exception. 
+Catch and handle the exception in the Service class. '''
+'''
+class Service:
+    def m1(self):
+        try:
+            self.m2()
+        except ValueError as e:
+            print("Error handled:", e)
+
+    def m2(self):
+        raise ValueError("Something wrong")
+s = Service()
+s.m1()
+#s.m2() #raises exception
+'''
+
 '''10• Create a class Transaction with a method process() that uses try, except, and 
-finally blocks to ensure a cleanup message is always printed.'''
+finally blocks to ensure a cleanup message is always printed. '''
 '''
 class Transaction:
     def process(self):
@@ -121,3 +184,19 @@ t = Transaction()
 t.process()
 '''
 
+'''11• Create a class LoginSystem with a method login(password) that raises an exception 
+for an incorrect password and handles the exception outside the class. '''
+'''
+class LoginSystem:
+    def login(self, password):
+        if password=="Python21":
+            raise ValueError("Incorrect password")
+        print("Login successful")
+
+l = LoginSystem()
+try:
+    l.login("Python")
+    #l.login("Python21")
+except ValueError as e:
+    print("Error:", e)
+'''
